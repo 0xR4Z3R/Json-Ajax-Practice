@@ -17,15 +17,18 @@ var btn = document.getElementById('btn');
 
 
 btn.addEventListener("click",function(){
-	var ourRequest = new XMLHttpRequest();
+	var ourRequest = new XMLHttpRequest(); //create request object
+	
 	ourRequest.open('GET','https://learnwebcode.github.io/json-example/animals-'+ clicked +'.json');
-
+	//prepare the request
+	
+	
 	ourRequest.onload = function(){
-	var ourData = JSON.parse(ourRequest.responseText);
-	renderHTML(ourData);
-	};
+	var ourData = JSON.parse(ourRequest.responseText); //parsing response text as json
+	renderHTML(ourData); //send data to be render in HTML page
+	};//
 
-	ourRequest.send();
+	ourRequest.send(); //send requst
 	clicked++;
 	if(clicked>3){
 		btn.setAttribute("class", "hide-me");
